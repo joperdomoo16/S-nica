@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+
+  --color-surface-dim: #050506;
+  --color-surface-container-low: #0a0a0d;
+  --color-surface-container-high: #141418;
+  --color-surface-container-highest: #1c1c22;
+  --color-primary: #00e5ff;
+  --color-primary-dim: #00acc1;
+  --color-secondary-container: #004d40;
+  --color-on-surface: #f0faff;
+  --color-on-surface-variant: #94abb3;
+  --color-outline-variant: #323d40;
+}
+
+@layer base {
+  body {
+    @apply bg-surface-dim text-on-surface font-sans antialiased overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    background-color: #050506;
+    color: #f0faff;
+  }
+
+  html, body {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    image-rendering: auto;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-surface-dim/40 backdrop-blur-2xl border border-white/5;
+    -webkit-backdrop-filter: blur(40px);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 32px rgba(0, 229, 255, 0.12);
+  }
+
+  .primary-gradient {
+    background: linear-gradient(135deg, #00e5ff 0%, #006064 100%);
+  }
+
+  .atmosphere-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 10% 10%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar,
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
